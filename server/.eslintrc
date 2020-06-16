@@ -1,0 +1,28 @@
+{
+  "extends": "eslint-config-egg",
+  "globals":{
+    "document": true,
+    "localStorage": true,
+    "window": true
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "eqeqeq": [0], // 是否支持==，0为支持
+    "indent": [ // 定义代码缩进
+      "error",
+      2
+    ],
+    "strict": [2, "never"],
+    "no-console": "off",
+    "semi": [ // 是否使用分号
+      "error",
+      "never"
+    ],
+    "no-undef": "error",
+    "array-bracket-spacing":["error", "never"],
+    "space-before-function-paren": 0 // 函数定义时括号前面要不要有空格
+  }
+}
