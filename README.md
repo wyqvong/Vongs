@@ -1,6 +1,7 @@
 # Blog
 
 - egg.js+ nuxt.js + mysql 博客项目
+- UI库：ElementUI
 
 ## 目录结构
 
@@ -20,6 +21,22 @@
   ├─.eslintrc.js        // ESLint的配置文件，用于检查代码格式
   ├─.gitignore          // 配置git忽略文件
   ├─nuxt.config.js      // 用于组织Nuxt.js 应用的个性化配置，以便覆盖默认配置。文件名不可更改。⭐
+  ├─package-lock.json   // npm自动生成，用于帮助package的统一设置的，yarn也有相同的操作
+  ├─package.json        // npm 包管理配置文件
+  ├─README.md
+```
+
+```
+└─server
+  ├─app                 // 源码
+  ├  ├─controller       // 控制层⭐
+  ├  ├─service          // 业务逻辑层⭐
+  ├  ├─public           // 公共资源
+  ├  └─router.js        // 设置路由⭐
+  ├─config              // 配置信息⭐
+  ├─test                // 测试
+  ├─.eslintrc.js        // ESLint的配置文件，用于检查代码格式
+  ├─.gitignore          // 配置git忽略文件
   ├─package-lock.json   // npm自动生成，用于帮助package的统一设置的，yarn也有相同的操作
   ├─package.json        // npm 包管理配置文件
   ├─README.md

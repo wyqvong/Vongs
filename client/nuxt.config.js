@@ -22,13 +22,18 @@ module.exports = {
   ** Global CSS
   */
   css: [
-
+    'element-ui/lib/theme-chalk/index.css',
+    {
+      src: '*.scss',
+      lang: 'scss'
+    }
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-
+    { src: '~/plugins/ElementUI', ssr: true },
+    '~/plugins/axios'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -39,7 +44,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-
+    '@nuxtjs/axios',
   ],
   /*
   ** Axios module configuration
@@ -65,6 +70,20 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    analyze: {
+      analyzerMode: 'static'
+    },
+    // 按需引入element-ui
+    babel: {
+      plugins: [
+        ["component",
+          {
+            "libraryName": "element-ui",
+            "styleLibraryName": "theme-chalk"
+          }
+        ]
+      ]
+    },
     /*
     ** Run ESLint on save
     */
@@ -77,7 +96,9 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    // 防止element-ui被多次打包
+    vendor: ['element-ui']
   }
 }
 
