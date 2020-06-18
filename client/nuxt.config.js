@@ -23,8 +23,9 @@ module.exports = {
   */
   css: [
     'element-ui/lib/theme-chalk/index.css',
+    // '~/assets/css/style.scss',
     {
-      src: '*.scss',
+      src: '~assets/css/style.scss',
       lang: 'scss'
     }
   ],
