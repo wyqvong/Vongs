@@ -16,8 +16,8 @@ export default {
     return{
       navList:[
         {name:'Home',link:'/'},
-        {name:'Article',link:'/'},
-        {name:'About',link:'/'}
+        {name:'Article',link:'/article'},
+        {name:'About',link:'/about'}
       ]
     }
   }
