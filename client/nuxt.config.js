@@ -23,16 +23,18 @@ module.exports = {
   */
   css: [
     'element-ui/lib/theme-chalk/index.css',
-    // '~/assets/css/style.scss',
+    '~assets/font/iconfont.css',
     {
       src: '~assets/css/style.scss',
       lang: 'scss'
-    }
+    },
+
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/assets/font/iconfont.js', ssr: false },
     { src: '~/plugins/ElementUI', ssr: true },
     '~/plugins/axios'
   ],

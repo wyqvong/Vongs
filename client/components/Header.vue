@@ -16,6 +16,7 @@ export default {
 
 <style lang="scss" scoped>
   .top{
+    z-index: 999;
     width: 100vw;
     position: fixed;
     background-color: #000;

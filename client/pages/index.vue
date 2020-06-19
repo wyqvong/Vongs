@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div>
     <top></top>
     <section>
       <div class="container">
@@ -18,26 +18,53 @@
         </div>
       </div>
     </section>
+    <main>
+      <div class="titlePage">
+        <h2>My Blogs</h2>
+        <span>Let's work hard to share those accumulated love.</span>
+      </div>
+      <div class="articleCards">
+        <card></card>
+        <card></card>
+        <card></card>
+        <card></card>
+        <card></card>
+        <card></card>
+        <card></card>
+        <card></card>
+        <card></card>
+      </div>
+    </main>
+    <i-footer></i-footer>
   </div>
 </template>
 
 <script>
 import top from '~/components/Header'
+import card from '~/components/articleCard'
+import iFooter from '~/components/footer'
 export default {
   components: {
-    top
+    top,
+    card,
+    iFooter
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .index{
-    min-width: 100vw;
-    min-height: 100vh;
-  }
+  // .index{
+  //   min-width: 100vw;
+  //   min-height: 100vh;
+  // }
   section{
+    min-height: 600px;//根据屏幕大小而定
     display: block;
     padding: 90px 0 90px 0;
+    background-image: url(~assets/img/lyqt.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     .container{
       max-width: 700px;
       margin-left: auto;
@@ -62,6 +89,35 @@ export default {
   }
   .btn{
     padding: 5px 35px;
+  }
+  main{
+    min-height: 600px;
+    padding-bottom: 30px;
+    .titlePage{
+      text-align: center;
+      padding: 60px 0 60px 0;
+      h2{
+        font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+        font-size: 40px;
+        color: #3e3e3e;
+        line-height: 57px;
+        font-weight: bold;
+        padding: 0;
+        padding-bottom: 20px;
+      }
+      span{
+        color: #666666;
+        font-size: 14px;
+        font-family: 'Lato', sans-serif;
+        line-height: 1.80857;
+        font-weight: normal;
+      }
+    }
+    .articleCards{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
 </style>
