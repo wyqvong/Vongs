@@ -1,6 +1,6 @@
 <template>
   <div>
-    <top></top>
+    <top/>
     <section>
       <div class="container">
         <div class="text">
@@ -10,7 +10,7 @@
           <p>
             <span>
               "我们自己始终是太阳，被乌云和黑暗遮盖也在继续发光."<br>
-              "Hi，世界那么大，很高兴在这里能被你看见."
+              "Hi，世界那么大，很高兴能在这里被你看见."
             </span>
           </p>
           <nuxt-link to="/" class="btn">开始阅读</nuxt-link>
@@ -27,11 +27,11 @@
         <card
         v-for="article in articles"
         :key="article.id"
-        :article="article"></card>
+        :article="article"/>
 
       </div>
     </main>
-    <i-footer></i-footer>
+    <i-footer/>
   </div>
 </template>
 
@@ -79,7 +79,7 @@ export default {
   //   min-height: 100vh;
   // }
   section{
-    min-height: 600px;//根据屏幕大小而定
+    min-height: 100vh;//根据屏幕大小而定
     display: block;
     padding: 90px 0 90px 0;
     background-image: url(~assets/img/lyqt.jpg);
