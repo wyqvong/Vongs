@@ -37,6 +37,7 @@ class ArticleService extends Service {
       return null
     }
   }
+
 }
 
 module.exports = ArticleService

@@ -34,9 +34,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/assets/font/iconfont.js', ssr: false },
-    { src: '~/plugins/ElementUI', ssr: true },
-    '~/plugins/axios'
+    { src: '~assets/font/iconfont.js', ssr: false },
+    { src: '~plugins/ElementUI', ssr: true },
+    { src: "~plugins/axios.js", ssr: true },
   ],
   /*
   ** Nuxt.js dev-modules
@@ -48,26 +48,34 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    proxy: true,
+    proxy: true, // 表示开启代理
+    prefix: '/api', // 表示给请求url加个前缀 /api
     // baseURL: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:7001/' : 'http://cboy.eyuanxing.cn:7001/'
-    baseURL: 'http://localhost:3001/'
+    // baseURL: 'http://localhost:1000/',
+    // credentials: true // 表示跨域请求时是否需要使用凭证
   },
   proxy: {
-    // '/api/': 'http://127.0.0.1:7001/',
-    // '/public/': {
-    //   target: 'http://127.0.0.1:7001/',
-    // },
-    // '/article': {
-    //   target: 'http://localhost:7001',
-    //   ws: true,
-    //   changeOrigin: true
-    // }
+    '/api': {
+      target: 'http://127.0.0.1:7001', // 目标接口域名
+      // headers: { 'Content-Type': 'application/json', 'crossDomain': true },
+      // timeout: 5000,
+      pathRewrite: {
+        '^/api': '/', // 把 /api 替换成 /
+        changeOrigin: true, // 表示是否跨域
+      }
+    },
+    '/article': {
+      target: 'http://127.0.0.1:7001',
+      // ws: true,
+      changeOrigin: true
+    }
   },
   /*
   ** Build configuration
@@ -100,8 +108,8 @@ module.exports = {
         })
       }
     },
-    // 防止element-ui被多次打包
-    vendor: ['element-ui']
+    // 防止多次打包
+    vendor: ['element-ui', 'axios']
   }
 }
 

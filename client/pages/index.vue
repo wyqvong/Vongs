@@ -24,15 +24,11 @@
         <span>Let's work hard to share those accumulated love.</span>
       </div>
       <div class="articleCards">
-        <card></card>
-        <card></card>
-        <card></card>
-        <card></card>
-        <card></card>
-        <card></card>
-        <card></card>
-        <card></card>
-        <card></card>
+        <card
+        v-for="article in articles"
+        :key="article.id"
+        :article="article"></card>
+
       </div>
     </main>
     <i-footer></i-footer>
@@ -48,7 +44,32 @@ export default {
     top,
     card,
     iFooter
+  },
+  data(){
+    return{
+      articles:[],
+    }
+  },
+  created(){
+    this.getArticle()
+  },
+  mounted(){
+
+  },
+  methods:{
+    getArticle(){
+      this.$axios.get('/article/lists')
+      .then(res => {
+        // res = res.data.data.map((i)=>{
+        //   i.createTime = i.createTime.split(0,10)
+        // })
+        this.articles = res.data.data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
   }
+
 }
 </script>
 

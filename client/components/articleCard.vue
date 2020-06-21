@@ -2,11 +2,11 @@
   <div class="card">
     <nuxt-link to="/">
       <div class="article">
-        <span class="title">令有琪图</span>
+        <span class="title">{{article.article_name}}</span>
       </div>
       <div class="cardContent">
-          <span class="articleTime">2020-05-30</span>
-          <span class="tag">lyqt</span>
+          <span class="articleTime">{{sliceTime}}</span>
+          <span class="tag">{{article.tag}}</span>
       </div>
     </nuxt-link>
   </div>
@@ -14,7 +14,23 @@
 
 <script>
 export default {
+  props:[ 'article' ],
+  data(){
+    return{
 
+    }
+  },
+  computed:{
+    sliceTime: function () {
+      return this.article.createTime.slice(0,10)
+    }
+  },
+  created(){
+
+  },
+  methods:{
+
+  }
 }
 </script>
 

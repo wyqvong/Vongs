@@ -21,9 +21,14 @@ module.exports = appInfo => {
   config.security = {
     csrf: {
       enable: false,
+      ignoreJSON: true,
     },
+    domainWhiteList: ['*'],
   }
-
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+  }
   config.mysql = {
     // 单数据库信息配置
     client: {
@@ -48,7 +53,7 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
   }
-
+  config.proxy = true
   return {
     ...config,
     ...userConfig,

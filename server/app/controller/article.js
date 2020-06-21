@@ -52,6 +52,7 @@ class ArticleController extends Controller {
       }
     }
   }
+
 }
 
 module.exports = ArticleController

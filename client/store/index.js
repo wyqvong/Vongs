@@ -1,5 +1,5 @@
 export const state = () => ({
-  topNavState: 1
+  topNavState: true
 })
 
 export const mutations = {
