@@ -1,14 +1,20 @@
 <template>
   <div>
     <top/>
+    <main>
+
+    </main>
+    <i-footer/>
   </div>
 </template>
 
 <script>
 import top from '~/components/Header'
+import iFooter from '~/components/footer'
 export default {
   components:{
-    top
+    top,
+    iFooter
   },
   data(){
     return{
