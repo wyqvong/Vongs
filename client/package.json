@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "element-ui": "^2.13.2",
+    "mavon-editor": "^2.9.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
@@ -33,7 +34,6 @@
     "eslint-loader": "^2.1.1",
     "eslint-plugin-vue": "^4.0.0",
     "highlight.js": "^10.1.1",
-    "marked": "^1.1.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
     "scss-loader": "0.0.1"

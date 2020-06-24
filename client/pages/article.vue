@@ -22,7 +22,17 @@
         </div>
         <div class="right">
           <div class="articleDetails">
-            <div v-html="articleContent"></div>
+            <!-- <div v-html="articleContent"></div> -->
+            <no-ssr>
+              <mavon-editor
+              :subfield = "false"
+              :defaultOpen = "'preview'"
+              :toolbarsFlag = "false"
+              :editable="false"
+              :scrollStyle="true"
+              :ishljs = "true"
+              v-model="articleContent"/>
+            </no-ssr>
           </div>
         </div>
       </div>
@@ -34,7 +44,6 @@
 <script>
 import top from '~/components/Header'
 import iFooter from '~/components/footer'
-import markdown from '~/plugins/marked'
 export default {
   components:{
     top,
@@ -47,17 +56,21 @@ export default {
   },
   data(){
     return{
+      markdownOption: {
+        bold: true, // 粗体
+      },
+      id:1,
       articleContent:''
     }
   },
   created(){
-    this.getArticleContent()
+    this.getArticleContent(this.id)
   },
   methods:{
     getArticleContent(id){
-      this.$axios.get('/article/detail/'+1)
+      this.$axios.get('/article/detail/'+id)
       .then(res=>{
-        this.articleContent = markdown(res.data.data)
+        this.articleContent = res.data.data.replace(/<pre>/g, "<pre class='hljs'>")
       })
     }
   }
@@ -125,9 +138,14 @@ main{
       padding: 0.75rem;
       margin-top: -60px;
       .articleDetails{
+        padding: 10px;
         min-height: 300px;
         background: #fff;
         border-radius: 10px;
+        // .mavonEditor {
+        //   width: 100%;
+        //   height: 100%;
+        // }
       }
     }
 

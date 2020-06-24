@@ -24,7 +24,8 @@ module.exports = {
   css: [
     'element-ui/lib/theme-chalk/index.css',
     '~assets/font/iconfont.css',
-    'highlight.js/styles/github.css',
+    // 'highlight.js/styles/atom-one-dark.css',
+    // 'mavon-editor/dist/css/index.css',
     {
       src: '~assets/css/style.scss',
       lang: 'scss'
@@ -35,15 +36,10 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    {
-      src: '~/plugins/marked.js'
-    },
-    // {
-    //   src: '~/plugins/highlight.js'
-    // },
     { src: '~assets/font/iconfont.js', ssr: false },
     { src: '~plugins/ElementUI', ssr: true },
     { src: '~plugins/axios.js', ssr: true },
+    { src: '@/plugins/vue-mavon-editor.js', ssr: false }
     // { src: '~plugins/markdown-loader.js', ssr: true }
   ],
   /*

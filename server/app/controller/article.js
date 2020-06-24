@@ -2,7 +2,6 @@ const Controller = require('egg').Controller
 const moment = require('moment')
 const fs = require('fs')
 const path = require('path')
-const marked = require('marked')
 class ArticleController extends Controller {
   async create () {
     const { ctx } = this
@@ -50,7 +49,8 @@ class ArticleController extends Controller {
       if (html) {
         ctx.body = {
           status: 200,
-          data: marked(html.toString()),
+          // data: marked(html.toString()),
+          data: html,
         }
       } else {
         ctx.body = {
