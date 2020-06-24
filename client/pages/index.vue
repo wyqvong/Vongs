@@ -60,9 +60,6 @@ export default {
     getArticle(){
       this.$axios.get('/article/lists')
       .then(res => {
-        // res = res.data.data.map((i)=>{
-        //   i.createTime = i.createTime.split(0,10)
-        // })
         this.articles = res.data.data
       }).catch(err => {
         console.log(err)
@@ -112,6 +109,7 @@ export default {
     padding: 5px 35px;
   }
   main{
+    background-color: #fff;
     min-height: 600px;
     padding-bottom: 30px;
     .titlePage{

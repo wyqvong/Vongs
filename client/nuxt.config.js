@@ -24,6 +24,7 @@ module.exports = {
   css: [
     'element-ui/lib/theme-chalk/index.css',
     '~assets/font/iconfont.css',
+    'highlight.js/styles/github.css',
     {
       src: '~assets/css/style.scss',
       lang: 'scss'
@@ -34,9 +35,16 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    {
+      src: '~/plugins/marked.js'
+    },
+    // {
+    //   src: '~/plugins/highlight.js'
+    // },
     { src: '~assets/font/iconfont.js', ssr: false },
     { src: '~plugins/ElementUI', ssr: true },
-    { src: "~plugins/axios.js", ssr: true },
+    { src: '~plugins/axios.js', ssr: true },
+    // { src: '~plugins/markdown-loader.js', ssr: true }
   ],
   /*
   ** Nuxt.js dev-modules
