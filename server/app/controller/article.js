@@ -39,6 +39,28 @@ class ArticleController extends Controller {
     }
   }
 
+  async tagsLists () {
+    const { ctx } = this
+    const result = await ctx.service.article.lists()
+    if (result) {
+      const res = {}
+      for (const i of result) {
+        const tag = i.tag
+        res[tag] = res[tag] || []
+        res[tag].push(i)
+      }
+      ctx.body = {
+        status: 200,
+        data: res,
+      }
+    } else {
+      ctx.body = {
+        status: 500,
+        errMsg: '查询文章列表失败',
+      }
+    }
+  }
+
   async detail () {
     const { ctx } = this
     const result = await ctx.service.article.detail(ctx.params.id)
@@ -49,7 +71,6 @@ class ArticleController extends Controller {
       if (html) {
         ctx.body = {
           status: 200,
-          // data: marked(html.toString()),
           data: html,
         }
       } else {

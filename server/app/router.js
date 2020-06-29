@@ -9,5 +9,6 @@ module.exports = app => {
   router.get('/user/:id', controller.user.find)
   router.post('/article/create', controller.article.create)
   router.get('/article/lists', controller.article.lists)
+  router.get('/article/tagsLists', controller.article.tagsLists)
   router.get('/article/detail/:id', controller.article.detail)
 }

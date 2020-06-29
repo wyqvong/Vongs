@@ -56,21 +56,26 @@ export default {
   },
   data(){
     return{
-      markdownOption: {
-        bold: true, // 粗体
-      },
       id:1,
+      articleLists:{},
       articleContent:''
     }
   },
   created(){
+    this.getArticleLists()
     this.getArticleContent(this.id)
   },
   methods:{
+    getArticleLists(){
+      this.$axios.get('/article/tagsLists')
+      .then(res=>{
+        this.articleLists = res.data.data
+      })
+    },
     getArticleContent(id){
       this.$axios.get('/article/detail/'+id)
       .then(res=>{
-        this.articleContent = res.data.data.replace(/<pre>/g, "<pre class='hljs'>")
+        this.articleContent = res.data.data
       })
     }
   }
