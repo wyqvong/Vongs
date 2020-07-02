@@ -18,13 +18,15 @@
     <main>
       <div class="article">
         <div class="left">
-          <div class="articleList"></div>
+          <div class="articleList">
+            <Menu :articleList="articleList" v-for="(articleList,index) in articleLists" :key="index"></Menu>
+          </div>
         </div>
         <div class="right">
           <div class="articleDetails">
-            <!-- <div v-html="articleContent"></div> -->
             <no-ssr>
               <mavon-editor
+              class="mavon"
               :subfield = "false"
               :defaultOpen = "'preview'"
               :toolbarsFlag = "false"
@@ -44,21 +46,30 @@
 <script>
 import top from '~/components/Header'
 import iFooter from '~/components/footer'
+import Menu from '~/components/Menu'
 export default {
   components:{
     top,
-    iFooter
+    iFooter,
+    Menu
   },
   computed:{
     // articleContent () {
     //   return markdown("article")
     // },
   },
+  watch: {
+    $route(){
+      this.id = this.$route.query.id
+      this.getArticleContent(this.id)
+    }
+  },
   data(){
     return{
       id:1,
       articleLists:{},
-      articleContent:''
+      articleContent:'',
+
     }
   },
   created(){
@@ -77,6 +88,9 @@ export default {
       .then(res=>{
         this.articleContent = res.data.data
       })
+    },
+    getPath(){
+      this.id = this.$route.query
     }
   }
 }
@@ -132,9 +146,12 @@ main{
       padding: 0.75rem;
       margin-top: -60px;
       .articleList{
+        min-width: 150px;
         min-height: 300px;
         background: #fff;
         border-radius: 10px;
+        padding: 10px;
+        background: rgba(126, 131, 129, 0.712);
       }
     }
     .right{
@@ -147,10 +164,9 @@ main{
         min-height: 300px;
         background: #fff;
         border-radius: 10px;
-        // .mavonEditor {
-        //   width: 100%;
-        //   height: 100%;
-        // }
+        .mavon{
+          z-index: 2;
+        }
       }
     }
 
